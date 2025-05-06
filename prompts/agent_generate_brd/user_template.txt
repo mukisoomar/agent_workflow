@@ -1,0 +1,2 @@
+Based *only* on the provided TAL technical specifications, generate a Business Requirements Document (BRD) for a project aiming to modernize or replace this functionality. Infer the business purpose and requirements from the technical details. Structure the BRD with sections like: Introduction/Purpose, Business Problem/Opportunity, Proposed Solution Overview, Key Functional Requirements (derived from TAL logic), and potentially Non-Functional Requirements (if inferable, e.g., performance, data handling). 
+Output the BRD in Markdown format

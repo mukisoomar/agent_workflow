@@ -1,0 +1,29 @@
+{
+  "agent_generate_java_code": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro-exp-03-25",
+    "temperature": 0.1,
+    "top_p": 0.9,
+    "n": 1,
+    "max_tokens": 1000000
+  },
+  "agent_generate_brd": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro-exp-03-25",
+    "temperature": 0.1,
+    "top_p": 0.9,
+    "n": 1,
+    "max_tokens": 1000000
+  },
+  "agent_tal_tech_specs": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro-exp-03-25",
+    "temperature": 0.1,
+    "top_p": 0.9,
+    "n": 1,
+    "max_tokens": 1000000
+  },
+  "agent_call_external_service": {
+    "output_file": "external_output.txt"
+  }
+}

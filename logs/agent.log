@@ -1,0 +1,87 @@
+2025-05-04 19:55:55 [INFO] Starting orchestration run
+2025-05-04 19:55:55 [INFO] Loading config/flow.json
+2025-05-04 19:55:55 [INFO] Importing Agent class
+2025-05-04 19:55:57 [INFO] Initializing agent: agent_document_tal_code
+2025-05-04 19:55:57 [INFO] Initializing Agent: agent_document_tal_code
+2025-05-04 19:55:57 [INFO] Loading model config for agent_document_tal_code
+2025-05-04 19:55:57 [INFO] Initializing agent: agent_generate_tal_tech_specs
+2025-05-04 19:55:57 [INFO] Initializing Agent: agent_generate_tal_tech_specs
+2025-05-04 19:55:57 [INFO] Loading model config for agent_generate_tal_tech_specs
+2025-05-04 19:55:57 [INFO] 
+=== Processing input file: sample2.tal ===
+2025-05-04 19:55:57 [INFO] Starting flow from agent: agent_document_tal_code
+2025-05-04 19:56:01 [INFO] Executing agent_document_tal_code on repository/sample2.tal...
+2025-05-04 19:56:01 [INFO] Running agent agent_document_tal_code...
+2025-05-04 19:56:01 [INFO] Loading user prompt template: prompts/agent_document_tal_code/user_template.txt
+2025-05-04 19:56:01 [ERROR] Missing placeholder key: 'tal_code'
+2025-05-04 19:56:01 [INFO] Sending request to LLM for agent_document_tal_code
+2025-05-04 19:56:40 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-04 19:56:40 [INFO] Gemini usage: prompt=1847, completion=3631, total=6124
+2025-05-04 19:56:51 [INFO] Extracting block between ``` and ```
+2025-05-04 19:57:00 [ERROR] agent_document_tal_code failed: Expected block not found between ``` ```.
+2025-05-04 19:57:05 [ERROR] Stopping flow: agent_document_tal_code failed: Agent agent_document_tal_code failed: Expected block not found between ``` ```.
+2025-05-04 20:00:54 [INFO] Starting orchestration run
+2025-05-04 20:00:54 [INFO] Loading config/flow.json
+2025-05-04 20:00:54 [INFO] Importing Agent class
+2025-05-04 20:00:55 [INFO] Initializing agent: agent_document_tal_code
+2025-05-04 20:00:55 [INFO] Initializing Agent: agent_document_tal_code
+2025-05-04 20:00:55 [INFO] Loading model config for agent_document_tal_code
+2025-05-04 20:00:55 [INFO] Initializing agent: agent_generate_tal_tech_specs
+2025-05-04 20:00:55 [INFO] Initializing Agent: agent_generate_tal_tech_specs
+2025-05-04 20:00:55 [INFO] Loading model config for agent_generate_tal_tech_specs
+2025-05-04 20:00:55 [INFO] 
+=== Processing input file: sample2.tal ===
+2025-05-04 20:00:55 [INFO] Starting flow from agent: agent_document_tal_code
+2025-05-04 20:00:55 [INFO] Executing agent_document_tal_code on repository/sample2.tal...
+2025-05-04 20:00:55 [INFO] Running agent agent_document_tal_code...
+2025-05-04 20:00:55 [INFO] Loading user prompt template: prompts/agent_document_tal_code/user_template.txt
+2025-05-04 20:00:55 [ERROR] Missing placeholder key: 'tal_code'
+2025-05-04 20:00:55 [INFO] Sending request to LLM for agent_document_tal_code
+2025-05-04 20:01:36 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-04 20:01:36 [INFO] Gemini usage: prompt=1847, completion=3681, total=6226
+2025-05-04 20:01:55 [INFO] Extracting block between ``` and ```
+2025-05-04 20:02:22 [INFO] Executing agent_generate_tal_tech_specs on output/sample2/agent_document_tal_code.txt...
+2025-05-04 20:02:22 [INFO] Running agent agent_generate_tal_tech_specs...
+2025-05-04 20:02:22 [INFO] Loading user prompt template: prompts/agent_generate_tal_tech_specs/user_template.txt
+2025-05-04 20:02:22 [INFO] Sending request to LLM for agent_generate_tal_tech_specs
+2025-05-04 20:02:53 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-04 20:02:53 [INFO] Gemini usage: prompt=3824, completion=2103, total=7145
+2025-05-04 20:03:04 [INFO] Extracting block between ``` and ```
+2025-05-06 14:02:47 [INFO] Starting orchestration run
+2025-05-06 14:02:47 [INFO] Loading config/flow.json
+2025-05-06 14:02:47 [INFO] Importing Agent class
+2025-05-06 14:02:48 [INFO] Initializing agent: agent_document_tal_code
+2025-05-06 14:05:05 [INFO] Starting orchestration run
+2025-05-06 14:05:05 [INFO] Loading config/flow.json
+2025-05-06 14:05:05 [INFO] Loading config/default.json
+2025-05-06 14:05:55 [INFO] Starting orchestration run
+2025-05-06 14:05:55 [INFO] Loading config/flow.json
+2025-05-06 14:05:55 [INFO] Loading config/default.json
+2025-05-06 14:05:55 [INFO] Loading config/agent_config.json
+2025-05-06 14:07:14 [INFO] Starting orchestration run
+2025-05-06 14:07:14 [INFO] Loading config/flow.json
+2025-05-06 14:07:14 [INFO] Loading config/default.json
+2025-05-06 14:07:14 [INFO] Loading config/agent_config.json
+2025-05-06 14:07:14 [INFO] Importing Agent class
+2025-05-06 14:07:15 [INFO] Initializing agent: agent_document_tal_code
+2025-05-06 14:07:15 [INFO] Initializing Agent: agent_document_tal_code
+2025-05-06 14:07:15 [INFO] Loading model config for agent_document_tal_code
+2025-05-06 14:07:15 [INFO] Initializing agent: agent_generate_tal_tech_specs
+2025-05-06 14:07:15 [INFO] Initializing Agent: agent_generate_tal_tech_specs
+2025-05-06 14:07:15 [INFO] Loading model config for agent_generate_tal_tech_specs
+2025-05-06 14:07:15 [INFO] Initializing agent: agent_call_external_service
+2025-05-06 14:07:15 [INFO] Initializing Agent: agent_call_external_service
+2025-05-06 14:07:15 [INFO] Loading model config for agent_call_external_service
+2025-05-06 14:07:15 [INFO] 
+=== Processing input file: sample2.tal ===
+2025-05-06 14:07:15 [INFO] Starting flow from agent: agent_document_tal_code
+2025-05-06 14:07:15 [INFO] Executing agent_document_tal_code on repository/sample2.tal...
+2025-05-06 14:07:15 [INFO] Running agent agent_document_tal_code...
+2025-05-06 14:07:15 [INFO] Loading user prompt template: prompts/agent_document_tal_code/user_template.txt
+2025-05-06 14:07:15 [ERROR] Missing placeholder key: 'tal_code'
+2025-05-06 14:07:15 [INFO] Sending request to LLM for agent_document_tal_code
+2025-05-06 14:08:13 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 14:08:13 [INFO] Gemini usage: prompt=1847, completion=3189, total=7519
+2025-05-06 14:08:13 [INFO] Extracting block between ```Agent Response Start``` and ```Agent Response End```
+2025-05-06 14:08:13 [ERROR] agent_document_tal_code failed: Expected block not found between 'Agent Response Start' and 'Agent Response End'.
+2025-05-06 14:08:13 [ERROR] Stopping flow: agent_document_tal_code failed: Agent agent_document_tal_code failed: Expected block not found between 'Agent Response Start' and 'Agent Response End'.

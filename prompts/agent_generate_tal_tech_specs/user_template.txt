@@ -1,0 +1,8 @@
+Generate comprehensive technical specifications for the provided TAL program. Include sections for: 
+Program Description, 
+Input Parameters (with types and descriptions), Return Value (if any), 
+Core Logic/Processing Steps, 
+Dependencies (e.g., called procedures), 
+and Usage Examples or Edge Cases. 
+
+Output the documentation in Markdown format within a ```markdown TAL Technical Specifications``` block.

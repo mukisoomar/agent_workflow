@@ -1,0 +1,34 @@
+{
+  "apigee": {
+    "token_api_endpoint": "https://endpoint",
+    "consumer_key_env_var_name": "APIGEE_CONSUMER_KEY",
+    "consumer_secret_env_var_name": "APIGEE_SECRET"
+  },
+  "tachyon": {
+    "generation_end_point": "https://generation_end_point",
+    "tachyon_api_key_env_var_name": "TACHYON_ENV_KEY"
+  },
+  "app": {
+    "app_id": "XYX",
+    "usecase_id": "YYY",
+    "client_id": "ZZZ"
+  },
+  "model": {
+    "provider": "gemini",
+    "name": "gemini-2.5-pro-exp-03-25",
+    "params": {
+      "temperature": 0.1,
+      "top_p": 0.9,
+      "top_k": 20,
+      "n": 1,
+      "max_tokens": 1000000
+    }
+  },
+  "tachyon_token": {
+    "token_type": "Bearer",
+    "access_token": "xxxx",
+    "issued_at": 123456,
+    "expires_in": 86399,
+    "scope": ""
+  }
+}
