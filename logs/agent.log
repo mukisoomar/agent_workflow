@@ -968,3 +968,73 @@
 2025-05-06 21:01:19 [INFO] [LLM] Gemini usage: prompt=603, completion=2302, total=3814
 2025-05-06 21:01:19 [INFO] [agent_generate_tal_tech_specs] Extracting code block between triple backticks
 2025-05-06 21:01:19 [INFO] [agent_generate_tal_tech_specs] Writing output for agent agent_generate_tal_tech_specs to output_repository/sample2/sample2_documented_tal_specs.txt
+2025-05-06 21:48:52 [INFO] [Orchestrator] Starting orchestration run
+2025-05-06 21:48:52 [INFO] [Orchestrator] Loading config/flow.json
+2025-05-06 21:48:52 [INFO] [Orchestrator] Loading config/default_config.json
+2025-05-06 21:48:52 [INFO] [Orchestrator] Loading config/agent_config.json
+2025-05-06 21:48:52 [INFO] [Orchestrator] Importing Agent class
+2025-05-06 21:48:53 [INFO] [Orchestrator] Initializing agent: agent_document_tal_code
+2025-05-06 21:48:53 [INFO] [agent_document_tal_code] Initializing Agent: agent_document_tal_code
+2025-05-06 21:48:53 [INFO] [Orchestrator] Initializing agent: agent_generate_tal_tech_specs
+2025-05-06 21:48:53 [INFO] [agent_generate_tal_tech_specs] Initializing Agent: agent_generate_tal_tech_specs
+2025-05-06 21:48:53 [INFO] [Orchestrator] Initializing agent: agent_call_external_service
+2025-05-06 21:48:53 [INFO] [agent_call_external_service] Initializing Agent: agent_call_external_service
+2025-05-06 21:48:53 [INFO] [Orchestrator] 
+=== Processing input file: sample2.tal ===
+2025-05-06 21:48:53 [INFO] [Orchestrator] Starting flow from agent: agent_document_tal_code
+2025-05-06 21:48:53 [INFO] [Orchestrator] Executing agent_document_tal_code on input_repository/sample2.tal...
+2025-05-06 21:48:53 [INFO] [agent_document_tal_code] Running agent agent_document_tal_code...
+2025-05-06 21:48:53 [INFO] [agent_document_tal_code] Reading initial input file: input_repository/sample2.tal
+2025-05-06 21:48:53 [INFO] [agent_document_tal_code] Loading user prompt template: prompts/agent_document_tal_code/user_template.txt
+2025-05-06 21:49:45 [INFO] [agent_document_tal_code] Sending request to LLM for agent agent_document_tal_code
+2025-05-06 21:50:26 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 21:50:26 [INFO] [LLM] Gemini usage: prompt=1825, completion=4315, total=6700
+2025-05-06 21:50:26 [INFO] [agent_document_tal_code] Extracting code block between triple backticks
+2025-05-06 21:50:26 [INFO] [agent_document_tal_code] Writing output for agent agent_document_tal_code to output_repository/sample2/sample2_documented.tal
+2025-05-06 21:50:26 [INFO] [Orchestrator] Executing agent_generate_tal_tech_specs on output_repository/sample2/sample2_documented.tal...
+2025-05-06 21:50:26 [INFO] [agent_generate_tal_tech_specs] Running agent agent_generate_tal_tech_specs...
+2025-05-06 21:50:26 [INFO] [agent_generate_tal_tech_specs] Loading user prompt template: prompts/agent_generate_tal_tech_specs/user_template.txt
+2025-05-06 21:50:31 [INFO] [agent_generate_tal_tech_specs] Sending request to LLM for agent agent_generate_tal_tech_specs
+2025-05-06 21:51:10 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 21:51:10 [INFO] [LLM] Gemini usage: prompt=738, completion=3114, total=5272
+2025-05-06 21:51:10 [INFO] [agent_generate_tal_tech_specs] Extracting code block between triple backticks
+2025-05-06 21:51:10 [INFO] [agent_generate_tal_tech_specs] Writing output for agent agent_generate_tal_tech_specs to output_repository/sample2/sample2_documented_tal_specs.md
+2025-05-06 21:58:36 [INFO] [Orchestrator] Starting orchestration run
+2025-05-06 21:58:36 [INFO] [Orchestrator] Loading config/flow.json
+2025-05-06 21:58:36 [INFO] [Orchestrator] Loading config/default_config.json
+2025-05-06 21:58:36 [INFO] [Orchestrator] Loading config/agent_config.json
+2025-05-06 21:58:36 [INFO] [Orchestrator] Importing Agent class
+2025-05-06 21:58:37 [INFO] [Orchestrator] Initializing agent: agent_document_tal_code
+2025-05-06 21:58:37 [INFO] [agent_document_tal_code] Initializing Agent: agent_document_tal_code
+2025-05-06 21:58:38 [INFO] [Orchestrator] Initializing agent: agent_generate_tal_tech_specs
+2025-05-06 21:58:38 [INFO] [agent_generate_tal_tech_specs] Initializing Agent: agent_generate_tal_tech_specs
+2025-05-06 21:58:38 [INFO] [Orchestrator] Initializing agent: agent_generate_brd
+2025-05-06 21:58:38 [INFO] [agent_generate_brd] Initializing Agent: agent_generate_brd
+2025-05-06 21:58:38 [INFO] [Orchestrator] 
+=== Processing input file: sample2.tal ===
+2025-05-06 21:58:38 [INFO] [Orchestrator] Starting flow from agent: agent_document_tal_code
+2025-05-06 21:58:38 [INFO] [Orchestrator] Executing agent_document_tal_code on input_repository/sample2.tal...
+2025-05-06 21:58:38 [INFO] [agent_document_tal_code] Running agent agent_document_tal_code...
+2025-05-06 21:58:38 [INFO] [agent_document_tal_code] Reading initial input file: input_repository/sample2.tal
+2025-05-06 21:58:38 [INFO] [agent_document_tal_code] Loading user prompt template: prompts/agent_document_tal_code/user_template.txt
+2025-05-06 21:58:40 [INFO] [agent_document_tal_code] Sending request to LLM for agent agent_document_tal_code
+2025-05-06 21:59:51 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 21:59:52 [INFO] [LLM] Gemini usage: prompt=1825, completion=4134, total=9498
+2025-05-06 21:59:52 [INFO] [agent_document_tal_code] Extracting code block between triple backticks
+2025-05-06 21:59:52 [INFO] [agent_document_tal_code] Writing output for agent agent_document_tal_code to output_repository/sample2/sample2_documented.tal
+2025-05-06 21:59:52 [INFO] [Orchestrator] Executing agent_generate_tal_tech_specs on output_repository/sample2/sample2_documented.tal...
+2025-05-06 21:59:52 [INFO] [agent_generate_tal_tech_specs] Running agent agent_generate_tal_tech_specs...
+2025-05-06 21:59:52 [INFO] [agent_generate_tal_tech_specs] Loading user prompt template: prompts/agent_generate_tal_tech_specs/user_template.txt
+2025-05-06 21:59:55 [INFO] [agent_generate_tal_tech_specs] Sending request to LLM for agent agent_generate_tal_tech_specs
+2025-05-06 22:00:41 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 22:00:41 [INFO] [LLM] Gemini usage: prompt=1188, completion=2879, total=5625
+2025-05-06 22:00:41 [INFO] [agent_generate_tal_tech_specs] Extracting code block between triple backticks
+2025-05-06 22:00:41 [INFO] [agent_generate_tal_tech_specs] Writing output for agent agent_generate_tal_tech_specs to output_repository/sample2/sample2_documented_tal_specs.md
+2025-05-06 22:00:41 [INFO] [Orchestrator] Executing agent_generate_brd on output_repository/sample2/sample2_documented_tal_specs.md...
+2025-05-06 22:00:41 [INFO] [agent_generate_brd] Running agent agent_generate_brd...
+2025-05-06 22:00:41 [INFO] [agent_generate_brd] Loading user prompt template: prompts/agent_generate_brd/user_template.txt
+2025-05-06 22:00:59 [INFO] [agent_generate_brd] Sending request to LLM for agent agent_generate_brd
+2025-05-06 22:01:29 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 22:01:29 [INFO] [LLM] Gemini usage: prompt=4352, completion=2454, total=7608
+2025-05-06 22:01:29 [INFO] [agent_generate_brd] Extracting code block between triple backticks
+2025-05-06 22:01:29 [INFO] [agent_generate_brd] Writing output for agent agent_generate_brd to output_repository/sample2/sample2_documented_tal_specs_brd.md

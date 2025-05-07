@@ -65,8 +65,8 @@ class Agent(BaseAgent):
             raise ValueError("Expected code block not found between triple backticks.")
         # Extract the content inside the backticks and strip any leading/trailing whitespace
         code_content = match.group(1).strip()
-        # Return the extracted content, re-wrapped in triple backticks
-        return f"```\n{code_content}\n```"
+        # Return the extracted content, removing the triple backticks
+        return f"{code_content}"
 
     def get_output_file_name(self, input_path):
         """

@@ -1,7 +1,5 @@
 {
-  "agent_document_tal_code": [
-    "agent_generate_tal_tech_specs"
-  ],
-  "agent_generate_tal_tech_specs": [],
-  "agent_call_external_service": []
+  "agent_document_tal_code": ["agent_generate_tal_tech_specs"],
+  "agent_generate_tal_tech_specs": ["agent_generate_brd"],
+  "agent_generate_brd": []
 }
