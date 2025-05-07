@@ -25,9 +25,9 @@ class LLMService:
                 raise ValueError("OPENAI_API_KEY environment variable not set.")
             self.client = OpenAI(api_key=api_key)
         elif self.provider == "gemini":
-            gemini_key = os.getenv("GEMINI_API_NEOTEK_KEY")
+            gemini_key = os.getenv("GEMINI_API_MUKI_DEV_KEY")
             if not gemini_key:
-                raise ValueError("GEMINI_API_NEOTEK_KEY environment variable not set.")
+                raise ValueError("GEMINI_API_MUKI_DEV_KEY environment variable not set.")
             self.client = OpenAI(
                 api_key=gemini_key,
                 base_url="https://generativelanguage.googleapis.com/v1beta/openai/"

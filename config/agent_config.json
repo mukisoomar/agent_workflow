@@ -27,6 +27,17 @@
     "output_file_suffix": "_tal_specs.md",
     "output_file_name": ""
   },
+  "agent_generate_flow_diagram": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro-exp-03-25",
+    "temperature": 0.1,
+    "top_p": 0.9,
+    "top_k": 20,
+    "n": 1,
+    "max_tokens": 1000000,
+    "output_file_suffix": "_flow_diagram",
+    "output_file_name": ""
+  },
   "agent_call_external_service": {
     "output_file": "external_output.txt"
   }
