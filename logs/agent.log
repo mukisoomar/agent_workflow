@@ -1251,3 +1251,206 @@
 2025-05-06 22:50:22 [INFO] [LLM] Gemini usage: prompt=4453, completion=631, total=11275
 2025-05-06 22:50:22 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
 2025-05-06 22:50:22 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample2/sample2_documented_flow_diagram
+2025-05-06 23:04:23 [INFO] [Orchestrator] Starting orchestration run
+2025-05-06 23:04:23 [INFO] [Orchestrator] Loading config/flow.json
+2025-05-06 23:04:23 [INFO] [Orchestrator] Loading config/default_config.json
+2025-05-06 23:04:23 [INFO] [Orchestrator] Loading config/agent_config.json
+2025-05-06 23:04:23 [INFO] [Orchestrator] Importing Agent class
+2025-05-06 23:04:24 [INFO] [Orchestrator] Initializing agent: agent_generate_flow_diagram
+2025-05-06 23:04:24 [INFO] [agent_generate_flow_diagram] Initializing Agent: agent_generate_flow_diagram
+2025-05-06 23:04:24 [INFO] [Orchestrator] 
+=== Processing input file: sample2.tal ===
+2025-05-06 23:04:24 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:04:24 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample2.tal...
+2025-05-06 23:04:24 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:04:24 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample2.tal
+2025-05-06 23:04:24 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:04:24 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:05:45 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:05:45 [INFO] [LLM] Gemini usage: prompt=967, completion=660, total=9609
+2025-05-06 23:05:45 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:05:45 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample2/sample2_flow_diagram
+2025-05-06 23:11:55 [INFO] [Orchestrator] Starting orchestration run
+2025-05-06 23:11:55 [INFO] [Orchestrator] Loading config/flow.json
+2025-05-06 23:11:55 [INFO] [Orchestrator] Loading config/default_config.json
+2025-05-06 23:11:55 [INFO] [Orchestrator] Loading config/agent_config.json
+2025-05-06 23:11:55 [INFO] [Orchestrator] Importing Agent class
+2025-05-06 23:11:55 [INFO] [Orchestrator] Initializing agent: agent_generate_flow_diagram
+2025-05-06 23:11:55 [INFO] [agent_generate_flow_diagram] Initializing Agent: agent_generate_flow_diagram
+2025-05-06 23:11:55 [INFO] [Orchestrator] 
+=== Processing input file: sample10.tal ===
+2025-05-06 23:11:55 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:11:55 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample10.tal...
+2025-05-06 23:11:55 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:11:55 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample10.tal
+2025-05-06 23:11:55 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:11:55 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:13:12 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:13:12 [INFO] [LLM] Gemini usage: prompt=967, completion=718, total=9408
+2025-05-06 23:13:12 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:13:12 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample10/sample10_flow_diagram
+2025-05-06 23:13:12 [INFO] [Orchestrator] 
+=== Processing input file: sample8.tal ===
+2025-05-06 23:13:12 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:13:12 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample8.tal...
+2025-05-06 23:13:12 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:13:12 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample8.tal
+2025-05-06 23:13:12 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:13:12 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:14:07 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:14:07 [INFO] [LLM] Gemini usage: prompt=967, completion=673, total=6745
+2025-05-06 23:14:07 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:14:07 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample8/sample8_flow_diagram
+2025-05-06 23:14:07 [INFO] [Orchestrator] 
+=== Processing input file: sample9.tal ===
+2025-05-06 23:14:07 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:14:07 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample9.tal...
+2025-05-06 23:14:07 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:14:07 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample9.tal
+2025-05-06 23:14:07 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:14:07 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:14:58 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:14:58 [INFO] [LLM] Gemini usage: prompt=967, completion=526, total=6539
+2025-05-06 23:14:58 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:14:58 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample9/sample9_flow_diagram
+2025-05-06 23:14:58 [INFO] [Orchestrator] 
+=== Processing input file: sample7.tal ===
+2025-05-06 23:14:58 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:14:58 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample7.tal...
+2025-05-06 23:14:58 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:14:58 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample7.tal
+2025-05-06 23:14:58 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:14:58 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:15:52 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:15:52 [INFO] [LLM] Gemini usage: prompt=967, completion=685, total=6639
+2025-05-06 23:15:52 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:15:52 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample7/sample7_flow_diagram
+2025-05-06 23:15:52 [INFO] [Orchestrator] 
+=== Processing input file: sample6.tal ===
+2025-05-06 23:15:52 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:15:52 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample6.tal...
+2025-05-06 23:15:52 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:15:52 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample6.tal
+2025-05-06 23:15:52 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:15:52 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:17:04 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:17:04 [INFO] [LLM] Gemini usage: prompt=967, completion=628, total=8500
+2025-05-06 23:17:04 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:17:04 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample6/sample6_flow_diagram
+2025-05-06 23:17:04 [INFO] [Orchestrator] 
+=== Processing input file: sample4.tal ===
+2025-05-06 23:17:04 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:17:04 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample4.tal...
+2025-05-06 23:17:04 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:17:04 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample4.tal
+2025-05-06 23:17:04 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:17:04 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:17:53 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:17:53 [INFO] [LLM] Gemini usage: prompt=967, completion=673, total=6343
+2025-05-06 23:17:53 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:17:53 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample4/sample4_flow_diagram
+2025-05-06 23:17:53 [INFO] [Orchestrator] 
+=== Processing input file: sample5.tal ===
+2025-05-06 23:17:53 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:17:53 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample5.tal...
+2025-05-06 23:17:53 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:17:53 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample5.tal
+2025-05-06 23:17:53 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:17:53 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:19:02 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:19:02 [INFO] [LLM] Gemini usage: prompt=967, completion=506, total=8075
+2025-05-06 23:19:02 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:19:02 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample5/sample5_flow_diagram
+2025-05-06 23:19:02 [INFO] [Orchestrator] 
+=== Processing input file: sample1.tal ===
+2025-05-06 23:19:02 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:19:02 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample1.tal...
+2025-05-06 23:19:02 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:19:02 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample1.tal
+2025-05-06 23:19:02 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:19:02 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:20:46 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:20:46 [INFO] [LLM] Gemini usage: prompt=928, completion=996, total=12072
+2025-05-06 23:20:46 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:20:46 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample1/sample1_flow_diagram
+2025-05-06 23:20:46 [INFO] [Orchestrator] 
+=== Processing input file: sample2.tal ===
+2025-05-06 23:20:46 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:20:46 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample2.tal...
+2025-05-06 23:20:46 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:20:46 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample2.tal
+2025-05-06 23:20:46 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:20:46 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:21:42 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:21:42 [INFO] [LLM] Gemini usage: prompt=878, completion=858, total=6686
+2025-05-06 23:21:42 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:21:42 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample2/sample2_flow_diagram
+2025-05-06 23:21:42 [INFO] [Orchestrator] 
+=== Processing input file: sample3.tal ===
+2025-05-06 23:21:42 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:21:42 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample3.tal...
+2025-05-06 23:21:42 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:21:42 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample3.tal
+2025-05-06 23:21:42 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:21:42 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:22:18 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:22:18 [INFO] [LLM] Gemini usage: prompt=832, completion=871, total=4799
+2025-05-06 23:22:18 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:22:18 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample3/sample3_flow_diagram
+2025-05-06 23:26:58 [INFO] [Orchestrator] Starting orchestration run
+2025-05-06 23:26:58 [INFO] [Orchestrator] Loading config/flow.json
+2025-05-06 23:26:58 [INFO] [Orchestrator] Loading config/default_config.json
+2025-05-06 23:26:58 [INFO] [Orchestrator] Loading config/agent_config.json
+2025-05-06 23:26:58 [INFO] [Orchestrator] Importing Agent class
+2025-05-06 23:26:58 [INFO] [Orchestrator] Initializing agent: agent_generate_flow_diagram
+2025-05-06 23:26:58 [INFO] [agent_generate_flow_diagram] Initializing Agent: agent_generate_flow_diagram
+2025-05-06 23:26:58 [INFO] [Orchestrator] 
+=== Processing input file: sample6.tal ===
+2025-05-06 23:26:58 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:26:58 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample6.tal...
+2025-05-06 23:26:58 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:26:58 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample6.tal
+2025-05-06 23:26:58 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:26:58 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:27:51 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:27:51 [INFO] [LLM] Gemini usage: prompt=832, completion=665, total=6483
+2025-05-06 23:27:51 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:27:51 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample6/sample6_flow_diagram
+2025-05-06 23:35:26 [INFO] [Orchestrator] Starting orchestration run
+2025-05-06 23:35:26 [INFO] [Orchestrator] Loading config/flow.json
+2025-05-06 23:35:26 [INFO] [Orchestrator] Loading config/default_config.json
+2025-05-06 23:35:26 [INFO] [Orchestrator] Loading config/agent_config.json
+2025-05-06 23:35:26 [INFO] [Orchestrator] Importing Agent class
+2025-05-06 23:35:26 [INFO] [Orchestrator] Initializing agent: agent_generate_flow_diagram
+2025-05-06 23:35:26 [INFO] [agent_generate_flow_diagram] Initializing Agent: agent_generate_flow_diagram
+2025-05-06 23:35:26 [INFO] [Orchestrator] 
+=== Processing input file: sample6.tal ===
+2025-05-06 23:35:26 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:35:26 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample6.tal...
+2025-05-06 23:35:26 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:35:26 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample6.tal
+2025-05-06 23:35:26 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:35:26 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:37:12 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:37:12 [INFO] [LLM] Gemini usage: prompt=791, completion=1293, total=12603
+2025-05-06 23:37:12 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:37:12 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample6/sample6_flow_diagram
+2025-05-06 23:51:12 [INFO] [Orchestrator] Starting orchestration run
+2025-05-06 23:51:12 [INFO] [Orchestrator] Loading config/flow.json
+2025-05-06 23:51:12 [INFO] [Orchestrator] Loading config/default_config.json
+2025-05-06 23:51:12 [INFO] [Orchestrator] Loading config/agent_config.json
+2025-05-06 23:51:12 [INFO] [Orchestrator] Importing Agent class
+2025-05-06 23:51:12 [INFO] [Orchestrator] Initializing agent: agent_generate_flow_diagram
+2025-05-06 23:51:12 [INFO] [agent_generate_flow_diagram] Initializing Agent: agent_generate_flow_diagram
+2025-05-06 23:51:13 [INFO] [Orchestrator] 
+=== Processing input file: sample6.tal ===
+2025-05-06 23:51:13 [INFO] [Orchestrator] Starting flow from agent: agent_generate_flow_diagram
+2025-05-06 23:51:13 [INFO] [Orchestrator] Executing agent_generate_flow_diagram on input_repository/sample6.tal...
+2025-05-06 23:51:13 [INFO] [agent_generate_flow_diagram] Running agent agent_generate_flow_diagram...
+2025-05-06 23:51:13 [INFO] [agent_generate_flow_diagram] Reading initial input file: input_repository/sample6.tal
+2025-05-06 23:51:13 [INFO] [agent_generate_flow_diagram] Loading user prompt template: prompts/agent_generate_flow_diagram/user_template.txt
+2025-05-06 23:51:13 [INFO] [agent_generate_flow_diagram] Sending request to LLM for agent agent_generate_flow_diagram
+2025-05-06 23:52:41 [INFO] [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-05-06 23:52:41 [INFO] [LLM] Gemini usage: prompt=875, completion=1020, total=10733
+2025-05-06 23:52:41 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
+2025-05-06 23:52:41 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample6/sample6_flow_diagram
