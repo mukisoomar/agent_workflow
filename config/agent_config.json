@@ -4,7 +4,7 @@
     "model": "gemini-2.5-pro-exp-03-25",
     "temperature": 0.1,
     "max_tokens": 10000,
-    "output_file_suffix": "documented"
+    "output_file_suffix": "_documented.tal"
   },
   "agent_generate_brd": {
     "provider": "gemini",
@@ -14,7 +14,7 @@
     "top_k": 20,
     "n": 1,
     "max_tokens": 1000000,
-    "output_file_suffix": "brd"
+    "output_file_suffix": "_brd.md"
   },
   "agent_generate_tal_tech_specs": {
     "provider": "gemini",
@@ -24,7 +24,7 @@
     "top_k": 20,
     "n": 1,
     "max_tokens": 1000000,
-    "output_file_suffix": "tal_specs",
+    "output_file_suffix": "_tal_specs.md",
     "output_file_name": ""
   },
   "agent_call_external_service": {

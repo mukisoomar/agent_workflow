@@ -5,4 +5,4 @@ Core Logic/Processing Steps,
 Dependencies (e.g., called procedures), 
 and Usage Examples or Edge Cases. 
 
-Output the documentation in Markdown format within a ```markdown TAL Technical Specifications``` block.
+Output the Techincal Specification documentation in Markdown format within a ``` ```code block. Do not include any text outside this block.

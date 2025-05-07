@@ -82,7 +82,7 @@ class Agent(BaseAgent):
         # Check for a suffix to append to the input file name
         if "output_file_suffix" in self.config:
             original_file_name = Path(input_path).stem
-            return f"{original_file_name}{self.config['output_file_suffix']}.txt"
+            return f"{original_file_name}{self.config['output_file_suffix']}"
 
         # Default to `{agent_name}.txt`
         return f"{self.name}.txt"
@@ -116,12 +116,16 @@ class Agent(BaseAgent):
                         "role": "assistant",
                         "content": f"[Context from {agent_name_prev}]:\n{output_prev.strip()}"
                     })
+            print(f"User Prompt: \n {user_prompt}")
+
             messages.append({"role": "user", "content": user_prompt})
 
             # --- Call LLM ---
             self.logger.info(f"Sending request to LLM for agent {self.name}")
             response = self.llm.chat(messages)
             content = response.choices[0].message.content
+
+            print(f"Response: \n {content}")
 
             # --- Process and Save Output ---
             output = self.extract_code_block(content)
