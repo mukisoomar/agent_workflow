@@ -6,7 +6,7 @@ Incorrect: MyNode["Label with \"inner quotes\""]
 Correct: MyNode["Label with &quot;inner quotes&quot;"]
 - For function calls, use a consistent prefix like 'CALL function_name'.
 
-2. Place comments (%%) on their own dedicated lines.
+2. Place comments (%%) on their own dedicated lines. The loop back comments should be after the line where the loop is indicated.
 
 
 Additional instructions:
