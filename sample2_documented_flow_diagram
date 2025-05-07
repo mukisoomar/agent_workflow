@@ -1,141 +1,47 @@
-%% Miranda Flow Chart for inventory_system
+graph TD
+    A["Start main_proc"] --> B["Initialize buffer"];
+    B --> C["CALL initialize_inventory"];
+    C --> D["cmd := 0"];
+    D --> E{"Loop while cmd <> 6"};
 
-proc main_proc
-  buffer = "initialized_with_spaces_for_buffer_size" %% Represents: buffer := buffer_size * [" "];
-  call initialize_inventory
-  cmd = 0
-  while cmd != 6
-    loop
-      call display_menu
-      call read_command(cmd) %% cmd is updated by read_command (passed by reference)
-      case cmd
-        of 1:
-          call add_item
-        of 2:
-          call delete_item
-        of 3:
-          call update_item
-        of 4:
-          call query_item
-        of 5:
-          call generate_report
-        of 6:
-          nop %% Exit command
-        otherwise:
-          error_code = error_invalid_input
-          call print_error
-      endcase
-      if cmd != 6
-      then
-        transaction_count = transaction_count + 1
-        call log_transaction(cmd, transaction_count)
-      endif
-    endloop
-  error_ptr = address_of(error_code) %% Represents: error_ptr := @error_code;
-  if error_ptr != 0 %% TAL code literally checks the pointer value
-  then
-    call print_error
-  endif
-  if inventory_count > 0
-  then
-    current_customer = address_of_definition(customer_record) %% Represents: current_customer := @customer_record; (address of structure type definition)
-    current_customer.is_active = 1
-    current_customer.tax_exempt = 1
-    current_customer.reserved = 0
-  endif
-  return success
-endproc
+    E -- "True (cmd <> 6)" --> F["CALL display_menu"];
+    F --> G["CALL read_command(cmd)"];
+    G --> H{"Process Command (CASE cmd)"};
 
-proc initialize_inventory
-  inventory_count = 3
-  inventory[0].item_id = 1001
-  inventory[0].item_name = "Widget A"
-  inventory[0].item_price = 19.99 %% TAL 'F' suffix for fixed-point is a type detail
-  inventory[0].quantity_on_hand = 150
-  inventory[0].reorder_level = 25
-  inventory[0].supplier_id = 101
-  inventory[0].last_updated = "2025-04-01"
+    H -- "1: ADD" --> I["CALL add_item"];
+    H -- "2: DELETE" --> J["CALL delete_item"];
+    H -- "3: UPDATE" --> K["CALL update_item"];
+    H -- "4: QUERY" --> L["CALL query_item"];
+    H -- "5: REPORT" --> M["CALL generate_report"];
+    H -- "6: EXIT" --> N["Cmd is 6 (No-op, prepare to exit loop)"];
+    H -- "OTHERWISE" --> O["error_code := error_invalid_input"];
+    O --> P["CALL print_error"];
 
-  inventory[1].item_id = 1002
-  inventory[1].item_name = "Widget B"
-  inventory[1].item_price = 29.99
-  inventory[1].quantity_on_hand = 75
-  inventory[1].reorder_level = 15
-  inventory[1].supplier_id = 102
-  inventory[1].last_updated = "2025-04-01"
+    %% Convergence point after CASE statement
+    I --> Q_AfterCase["After command processing"];
+    J --> Q_AfterCase;
+    K --> Q_AfterCase;
+    L --> Q_AfterCase;
+    M --> Q_AfterCase;
+    N --> Q_AfterCase;
+    P --> Q_AfterCase;
+    
+    Q_AfterCase --> Q_LogTx{"IF cmd <> 6 (Log Transaction?)"};
+    Q_LogTx -- "True" --> R["transaction_count := transaction_count + 1"];
+    R --> S["CALL log_transaction (External)"];
+    S --> E; %% Loop back to WHILE condition
+    Q_LogTx -- "False (cmd = 6)" --> E; %% Loop back to WHILE condition
 
-  inventory[2].item_id = 1003
-  inventory[2].item_name = "Widget C"
-  inventory[2].item_price = 39.99
-  inventory[2].quantity_on_hand = 50
-  inventory[2].reorder_level = 10
-  inventory[2].supplier_id = 101
-  inventory[2].last_updated = "2025-04-01"
-endproc
+    E -- "False (cmd = 6, Exit Loop)" --> T["error_ptr := @error_code"];
+    T --> U{"IF error_ptr <> 0 (Check error pointer)"};
+    U -- "True" --> V["CALL print_error"];
+    V --> W_AfterErrorPtrCheck["Continue after error_ptr check"];
+    U -- "False" --> W_AfterErrorPtrCheck;
 
-proc display_menu
-  buffer = "==== Inventory System Menu ===="  %% Assigns to global buffer
-  call write_line(buffer, 30) %% Assumes write_line uses the passed buffer contents
-  for i from 0 to 5
-    loop
-      %% Construct menu item string in the global buffer, assuming 0-indexed for buffer access
-      buffer = "                                        " %% Initialize/clear global buffer for menu line
-      buffer[0] = ' '
-      buffer[1] = ' '
-      buffer[2] = digit_to_char(command_codes[i]) %% TAL: buffer[2] := command_codes[i] (int to char conversion)
-      buffer[3] = '.'
-      buffer[4] = ' '
-      %% TAL: buffer[5] := command_names[i]; (assigns string starting at index 5)
-      %% This copies the string command_names[i] into buffer starting at index 5.
-      copy_string_into_segment(destination_buffer=buffer, dest_start_index=5, source_string=command_names[i])
-      call write_line(buffer, 15) %% Assumes write_line uses the passed buffer contents
-    endloop
-  buffer = "Enter command: " %% Assigns to global buffer
-  call write %% 'write' proc implicitly uses global 'buffer'
-endproc
-
-proc print_error %% Forward declared in TAL, definition stubbed here
-  statement "Undefined: Output error_messages[error_code] to console"
-  %% Example from TAL comments: CALL write_line(error_messages[error_code], length_of_message);
-endproc
-
-proc read_command(cmd_param) %% Called in TAL, definition stubbed here
-  statement "Undefined: Read user input and store in cmd_param"
-  %% Example from TAL comments: Read input from user and store in cmd_param
-endproc
-
-proc add_item %% Called in TAL, definition stubbed here
-  statement "Undefined: add_item logic"
-endproc
-
-proc delete_item %% Called in TAL, definition stubbed here
-  statement "Undefined: delete_item logic"
-endproc
-
-proc update_item %% Called in TAL, definition stubbed here
-  statement "Undefined: update_item logic"
-endproc
-
-proc query_item %% Called in TAL, definition stubbed here
-  statement "Undefined: query_item logic"
-endproc
-
-proc generate_report %% Called in TAL, definition stubbed here
-  statement "Undefined: generate_report logic"
-endproc
-
-proc log_transaction(cmd, count) %% Declared EXTERNAL PROC in TAL
-  statement "External: log_transaction(cmd, count)"
-endproc
-
-proc fetch_customer_data %% Declared EXTERNAL PROC in TAL (not called in this flow)
-  statement "External: fetch_customer_data"
-endproc
-
-proc write_line(line_to_write, length) %% Called in TAL, definition stubbed (system/external like)
-  statement "Undefined: Output line_to_write up to length characters to console"
-endproc
-
-proc write %% Called in TAL, definition stubbed (system/external like, uses global buffer)
-  statement "Undefined: Output global buffer to console"
-endproc
+    W_AfterErrorPtrCheck --> W_InvCheck{"IF inventory_count > 0 (Any items in inventory?)"};
+    W_InvCheck -- "True" --> X["current_customer := @customer_record"];
+    X --> Y["Set current_customer flags (is_active, tax_exempt, reserved)"];
+    Y --> AB_Return["RETURN success"];
+    W_InvCheck -- "False" --> AB_Return;
+    
+    AB_Return --> AC["End main_proc"];
