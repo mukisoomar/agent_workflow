@@ -1,0 +1,47 @@
+graph TD
+    A["Start main_proc"] --> B["Initialize buffer"];
+    B --> C["CALL initialize_inventory"];
+    C --> D["cmd := 0"];
+    D --> E{"Loop while cmd <> 6"};
+
+    E -- "True (cmd <> 6)" --> F["CALL display_menu"];
+    F --> G["CALL read_command(cmd)"];
+    G --> H{"Process Command (CASE cmd)"};
+
+    H -- "1: ADD" --> I["CALL add_item"];
+    H -- "2: DELETE" --> J["CALL delete_item"];
+    H -- "3: UPDATE" --> K["CALL update_item"];
+    H -- "4: QUERY" --> L["CALL query_item"];
+    H -- "5: REPORT" --> M["CALL generate_report"];
+    H -- "6: EXIT" --> N["Cmd is 6 (No-op, prepare to exit loop)"];
+    H -- "OTHERWISE" --> O["error_code := error_invalid_input"];
+    O --> P["CALL print_error"];
+
+    %% Convergence point after CASE statement
+    I --> Q_AfterCase["After command processing"];
+    J --> Q_AfterCase;
+    K --> Q_AfterCase;
+    L --> Q_AfterCase;
+    M --> Q_AfterCase;
+    N --> Q_AfterCase;
+    P --> Q_AfterCase;
+    
+    Q_AfterCase --> Q_LogTx{"IF cmd <> 6 (Log Transaction?)"};
+    Q_LogTx -- "True" --> R["transaction_count := transaction_count + 1"];
+    R --> S["CALL log_transaction (External)"];
+    S --> E; %% Loop back to WHILE condition
+    Q_LogTx -- "False (cmd = 6)" --> E; %% Loop back to WHILE condition
+
+    E -- "False (cmd = 6, Exit Loop)" --> T["error_ptr := @error_code"];
+    T --> U{"IF error_ptr <> 0 (Check error pointer)"};
+    U -- "True" --> V["CALL print_error"];
+    V --> W_AfterErrorPtrCheck["Continue after error_ptr check"];
+    U -- "False" --> W_AfterErrorPtrCheck;
+
+    W_AfterErrorPtrCheck --> W_InvCheck{"IF inventory_count > 0 (Any items in inventory?)"};
+    W_InvCheck -- "True" --> X["current_customer := @customer_record"];
+    X --> Y["Set current_customer flags (is_active, tax_exempt, reserved)"];
+    Y --> AB_Return["RETURN success"];
+    W_InvCheck -- "False" --> AB_Return;
+    
+    AB_Return --> AC["End main_proc"];

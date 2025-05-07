@@ -1,0 +1,50 @@
+graph TD
+    A[Start] --> B["Initialize Scanner, Inventory, TransactionLogger, keepRunning = true"];
+    B --> C{"Loop: while keepRunning?"};
+
+    C -- "True (keepRunning is true)" --> D[CALL displayMenu()];
+    D --> E[Read command from user];
+    E --> F{"Process Command (SWITCH command)"};
+
+    %% Common Log Transaction Node for cases 1-5
+    G["CALL logger.logTransaction(action, details)"];
+    G --> C; %% Loop back to condition check after logging
+
+    %% Case 1: ADD
+    F -- "1: ADD" --> F1_1[Prompt for item details: name, quantity, price];
+    F1_1 --> F1_2[Create Item object];
+    F1_2 --> F1_3["CALL inventory.addItem(item)"];
+    F1_3 -- "Log 'ADD', itemName" --> G;
+
+    %% Case 2: UPDATE_QUANTITY
+    F -- "2: UPDATE_QUANTITY" --> F2_1[Prompt for item name, new quantity];
+    F2_1 --> F2_2["CALL inventory.updateItemQuantity(itemName, newQuantity)"];
+    F2_2 -- "Log 'UPDATE_QUANTITY', itemName" --> G;
+
+    %% Case 3: VIEW_ITEM
+    F -- "3: VIEW_ITEM" --> F3_1[Prompt for item name];
+    F3_1 --> F3_2["CALL inventory.viewItem(itemName)"];
+    F3_2 -- "Log 'VIEW_ITEM', itemName" --> G;
+
+    %% Case 4: VIEW_INVENTORY
+    F -- "4: VIEW_INVENTORY" --> F4_1["CALL inventory.viewInventory()"];
+    F4_1 -- "Log 'VIEW_INVENTORY', 'ALL_ITEMS'" --> G;
+
+    %% Case 5: REMOVE_ITEM
+    F -- "5: REMOVE_ITEM" --> F5_1[Prompt for item name];
+    F5_1 --> F5_2["CALL inventory.removeItem(itemName)"];
+    F5_2 -- "Log 'REMOVE_ITEM', itemName" --> G;
+
+    %% Case 6: EXIT
+    F -- "6: EXIT" --> F6_1[Print "Exiting program."];
+    F6_1 --> F6_2["CALL logger.close()"];
+    F6_2 --> F6_3["CALL scanner.close()"];
+    F6_3 --> F6_4["Set keepRunning = false"];
+    F6_4 --> C; %% Loop back to condition check (will exit)
+
+    %% Default Case
+    F -- "OTHERWISE" --> F_DEF[Print "Invalid command. Please try again."];
+    F_DEF --> C; %% Loop back to condition check (bypasses logging)
+
+    %% Exit Loop
+    C -- "False (keepRunning is false)" --> Z[End];

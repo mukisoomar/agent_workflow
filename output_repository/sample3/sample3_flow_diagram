@@ -1,0 +1,58 @@
+graph TD
+    A[Start] --> B["Initialize cmd = 0, balance = 1000, Scanner"];
+    B --> E{"Loop: while cmd != 6"};
+
+    %% Loop continues (cmd != 6 is True)
+    E -- "True" --> F[CALL displayMenu()];
+    F --> G["Read user input for cmd"];
+    G --> H{"Process Command (CASE cmd)"};
+
+    %% Case 1: ADD
+    H -- "1: ADD" --> H1_1["Prompt for amount"];
+    H1_1 --> H1_2["Read amount"];
+    H1_2 --> H1_3["balance = CALL add(amount, balance)"];
+    H1_3 --> LOG_TX_ADD["CALL logTransaction(&quot;ADD&quot;, amount, balance)"];
+    LOG_TX_ADD --> E; %% Loop back to condition
+
+    %% Case 2: SUBTRACT
+    H -- "2: SUBTRACT" --> H2_1["Prompt for amount"];
+    H2_1 --> H2_2["Read amount"];
+    H2_2 --> H2_3["balance = CALL subtract(amount, balance)"];
+    H2_3 --> LOG_TX_SUB["CALL logTransaction(&quot;SUBTRACT&quot;, amount, balance)"];
+    LOG_TX_SUB --> E; %% Loop back to condition
+
+    %% Case 3: VIEW BALANCE
+    H -- "3: VIEW BALANCE" --> H3_1["CALL viewBalance(balance)"];
+    H3_1 --> LOG_TX_VIEW["CALL logTransaction(&quot;VIEW&quot;, 0, balance)"];
+    LOG_TX_VIEW --> E; %% Loop back to condition
+
+    %% Case 4: INTEREST CALCULATION
+    H -- "4: INTEREST CALCULATION" --> H4_1["Print &quot;Interest Calculation (Not Implemented)&quot;"];
+    H4_1 --> LOG_TX_INT["CALL logTransaction(&quot;INTEREST_CALC&quot;, 0, balance)"];
+    LOG_TX_INT --> E; %% Loop back to condition
+
+    %% Case 5: SPECIAL OPERATION
+    H -- "5: SPECIAL OPERATION" --> H5_1["Print &quot;Special Operation (Not Implemented)&quot;"];
+    H5_1 --> LOG_TX_SPEC["CALL logTransaction(&quot;SPECIAL_OP&quot;, 0, balance)"];
+    LOG_TX_SPEC --> E; %% Loop back to condition
+
+    %% Case 6: EXIT
+    H -- "6: EXIT" --> H6_1["Print &quot;Exiting...&quot;"];
+    %% cmd is 6, so loop condition (cmd != 6) will be false on next check
+    H6_1 --> E; %% Loop back to condition (will exit)
+
+    %% Default Case
+    H -- "OTHERWISE" --> H_DEF["Print &quot;Invalid command&quot;"];
+    H_DEF --> E; %% Loop back to condition
+
+    %% Loop exits (cmd != 6 is False, meaning cmd == 6)
+    E -- "False (cmd == 6)" --> I["Print &quot;Program terminated.&quot;"];
+    I --> J["Close Scanner"];
+    J --> K[End];
+
+    %% Mermaid comments explaining key decision points and flow
+    %% Node E represents the main loop condition.
+    %% All active processing paths (Cases 1-5, Default) eventually loop back to E.
+    %% Case 6 also loops back to E, but since cmd is 6, the loop condition E{&quot;Loop: while cmd != 6&quot;} will evaluate to False, leading to node I.
+    %% Transaction logging occurs for commands 1-5 before looping back.
+    %% Transaction logging does NOT occur for command 6 (EXIT) or OTHERWISE.

@@ -1,0 +1,89 @@
+graph TD
+    Start["Start"] --> Init["Initialize Account, Scanner, cmd=0, error=false, log=&quot;&quot;"];
+    Init --> LoopCond{"Loop: while cmd != 6"};
+
+%% Main loop entry point
+    LoopCond -- "True (cmd != 6)" --> ResetError["Set error = false"];
+    ResetError --> DisplayMenu["Display Menu"];
+    DisplayMenu --> GetInputCmd["Get command (cmd) from user"];
+    GetInputCmd --> ProcessCmdSwitch{"Process Command (CASE cmd)"};
+
+%% Case 1: ADD
+    ProcessCmdSwitch -- "1: ADD" --> Add_PromptAmt["Prompt for deposit amount"];
+    Add_PromptAmt --> Add_GetAmt["Get deposit amount"];
+    Add_GetAmt --> Add_CheckAmtValid{"amount <= 0?"};
+    Add_CheckAmtValid -- "True" --> Add_InvalidMsg["Display &quot;Invalid deposit msg&quot;"];
+    Add_InvalidMsg --> Add_SetError["Set error = true"];
+    Add_SetError --> CheckLogTransaction;
+%%
+    Add_CheckAmtValid -- "False" --> Add_Deposit["CALL account.deposit(amount)"];
+    Add_Deposit --> Add_LogDepositMsg["Display &quot;Log DEPOSIT&quot;"];
+    Add_LogDepositMsg --> CheckLogTransaction;
+%%
+
+%% Case 2: SUBTRACT
+    ProcessCmdSwitch -- "2: SUBTRACT" --> Sub_PromptAmt["Prompt for withdraw amount"];
+    Sub_PromptAmt --> Sub_GetAmt["Get withdraw amount"];
+    Sub_GetAmt --> Sub_CheckAmtValid{"amount <= 0?"};
+    Sub_CheckAmtValid -- "True" --> Sub_InvalidMsg["Display &quot;Invalid withdraw msg&quot;"];
+    Sub_InvalidMsg --> Sub_SetError["Set error = true"];
+    Sub_SetError --> CheckLogTransaction;
+%%
+    Sub_CheckAmtValid -- "False" --> Sub_CheckBalance{"amount > account.getBalance()?"};
+    Sub_CheckBalance -- "True" --> Sub_InsufficientMsg["Display &quot;Insufficient funds msg&quot;"];
+    Sub_InsufficientMsg --> Sub_SetError; 
+%%
+    Sub_CheckBalance -- "False" --> Sub_Withdraw["CALL account.withdraw(amount)"];
+    Sub_Withdraw --> Sub_LogWithdrawMsg["Display &quot;Log WITHDRAW&quot;"];
+    Sub_LogWithdrawMsg --> CheckLogTransaction;
+%%
+
+%% Case 3: INTEREST
+    ProcessCmdSwitch -- "3: INTEREST" --> Int_PromptRate["Prompt for interest rate"];
+    Int_PromptRate --> Int_GetRate["Get interest rate"];
+    Int_GetRate --> Int_CheckRateValid{"rate <= 0?"};
+    Int_CheckRateValid -- "True" --> Int_InvalidMsg["Display &quot;Invalid rate msg&quot;"];
+    Int_InvalidMsg --> Int_SetError["Set error = true"];
+    Int_SetError --> CheckLogTransaction;
+%%
+    Int_CheckRateValid -- "False" --> Int_AddInterest["CALL account.addInterest(rate)"];
+    Int_AddInterest --> Int_LogInterestMsg["Display &quot;Log INTEREST&quot;"];
+    Int_LogInterestMsg --> CheckLogTransaction;
+%%
+
+%% Case 4: VIEW
+    ProcessCmdSwitch -- "4: VIEW" --> View_DisplayBalance["Display current balance"];
+    View_DisplayBalance --> View_LogViewMsg["Display &quot;Log VIEW&quot;"];
+    View_LogViewMsg --> CheckLogTransaction;
+%%
+
+%% Case 5: LOG
+    ProcessCmdSwitch -- "5: LOG" --> Log_DisplayLog["Display transaction log string"];
+    Log_DisplayLog --> Log_LogLogMsg["Display &quot;Log LOG&quot;"];
+    Log_LogLogMsg --> CheckLogTransaction;
+%%
+
+%% Case 6: EXIT
+    ProcessCmdSwitch -- "6: EXIT" --> Exit_DisplayMsg["Display &quot;Exiting command msg&quot;"];
+    Exit_DisplayMsg --> LoopCond;
+%% Loop back to check exit condition
+%%
+
+%% Default Case
+    ProcessCmdSwitch -- "OTHERWISE" --> Def_InvalidMsg["Display &quot;Invalid command msg&quot;"];
+    Def_InvalidMsg --> Def_SetError["Set error = true"];
+    Def_SetError --> CheckLogTransaction;
+%%
+
+%% Log Transaction Logic Node
+    CheckLogTransaction{"Log Transaction? (cmd >=1 && cmd <=5 && !error)"};
+    CheckLogTransaction -- "True" --> AppendToLog["Append transaction to log string"];
+    AppendToLog --> LoopCond;
+%% Loop back
+%%
+    CheckLogTransaction -- "False" --> LoopCond;
+%% Loop back
+%%
+
+%% Loop exits
+    LoopCond -- "False (cmd == 6)" --> EndNode["End"];

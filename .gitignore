@@ -12,8 +12,8 @@ __pycache__/
 README[0-9]*
 
 # Example files
-_examples/
+# _examples/
 
 # Input and Output repositories
-input_repository/
-output_repository/
+# input_repository/
+# output_repository/

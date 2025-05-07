@@ -1,0 +1,53 @@
+graph TD
+    A[Start] --> B["Initialize (scanner, inventory, logger, exit=false)"];
+    B --> C{"Loop: while !exit"};
+
+    %% Main loop path
+    C -- "True (!exit)" --> D["CALL displayMenu()"];
+    D --> E["Read command from user"];
+    E --> F{"Process Command (SWITCH command)"};
+
+    %% Case 1: ADD
+    F -- "1: ADD" --> G1["Prompt for item name, quantity, price"];
+    G1 --> G2["CALL inventory.addItem(name, quantity, price)"];
+    G2 --> G3["CALL logger.logTransaction('ADD', itemName, quantity)"];
+    G3 --> C; %% Loop back to condition
+
+    %% Case 2: REMOVE
+    F -- "2: REMOVE" --> H1["Prompt for item name, quantity to remove"];
+    H1 --> H2["CALL inventory.removeItem(name, quantity)"];
+    H2 --> H3["CALL logger.logTransaction('REMOVE', itemName, quantity)"];
+    H3 --> C; %% Loop back to condition
+
+    %% Case 3: VIEW
+    F -- "3: VIEW" --> I1["CALL inventory.viewInventory()"];
+    I1 --> I2["CALL logger.logTransaction('VIEW', '', 0)"];
+    I2 --> C; %% Loop back to condition
+
+    %% Case 4: SEARCH
+    F -- "4: SEARCH" --> J1["Prompt for item name to search"];
+    J1 --> J2["CALL inventory.searchItem(name)"];
+    J2 --> J3["CALL logger.logTransaction('SEARCH', itemName, 0)"];
+    J3 --> C; %% Loop back to condition
+
+    %% Case 5: UPDATE_PRICE
+    F -- "5: UPDATE_PRICE" --> K1["Prompt for item name, new price"];
+    K1 --> K2["CALL inventory.updateItemPrice(name, newPrice)"];
+    K2 --> K3["CALL logger.logTransaction('UPDATE_PRICE', itemName, 0)"];
+    K3 --> C; %% Loop back to condition
+
+    %% Case 6: EXIT
+    F -- "6: EXIT" --> L1["Print 'Exiting program.'"];
+    L1 --> L2["CALL logger.logTransaction('EXIT', '', 0)"];
+    L2 --> L3["Set exit = true"];
+    L3 --> C; %% Loop back to condition, which will then evaluate to false
+
+    %% Default Case
+    F -- "OTHERWISE (default)" --> M1["Print 'Invalid command.'"];
+    M1 --> M2["CALL logger.logTransaction('INVALID_COMMAND', commandAsString, 0)"];
+    M2 --> C; %% Loop back to condition
+
+    %% Exit loop path
+    C -- "False (exit is true)" --> N["CALL scanner.close()"];
+    N --> O["CALL logger.close()"];
+    O --> Z[End];

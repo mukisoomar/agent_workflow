@@ -1,0 +1,53 @@
+graph TD
+    A[Start] --> B["Initialize Scanner, Inventory, Logger, exit_requested = false"];
+    B --> E{"Loop: while !exit_requested"};
+
+    %% Loop Body
+    E -- "True (!exit_requested)" --> F["CALL displayMenu()"];
+    F --> G["Read User Command (cmd)"];
+    G --> H{"Process Command (switch cmd)"};
+
+    %% Case 1: ADD
+    H -- "1: ADD" --> I1["Prompt for Item Details (ID, Name, Qty, Price)"];
+    I1 --> I2["Create Item object"];
+    I2 --> I3["CALL inventory.addItem(item)"];
+    I3 --> I4["CALL logger.logTransaction('ADD', item.getName(), item.getQuantity())"];
+    I4 --> E; %% Back to loop condition
+
+    %% Case 2: REMOVE
+    H -- "2: REMOVE" --> J1["Prompt for Item ID to Remove"];
+    J1 --> J2["CALL inventory.removeItem(itemIdToRemove)"];
+    J2 --> J3["CALL logger.logTransaction('REMOVE', itemIdToRemove, 1)"];
+    J3 --> E; %% Back to loop condition
+
+    %% Case 3: UPDATE_QUANTITY
+    H -- "3: UPDATE_QUANTITY" --> K1["Prompt for Item ID & New Quantity"];
+    K1 --> K2["CALL inventory.updateItemQuantity(itemIdToUpdate, newQuantity)"];
+    K2 --> K3["CALL logger.logTransaction('UPDATE_QUANTITY', itemIdToUpdate, newQuantity)"];
+    K3 --> E; %% Back to loop condition
+
+    %% Case 4: VIEW_INVENTORY
+    H -- "4: VIEW_INVENTORY" --> L1["CALL inventory.displayInventory()"];
+    L1 --> E; %% Back to loop condition
+
+    %% Case 5: SEARCH_ITEM
+    H -- "5: SEARCH_ITEM" --> M1["Prompt for Item ID to Search"];
+    M1 --> M2["CALL inventory.findItemById(itemIdToSearch)"];
+    M2 --> M3{"Item Found?"};
+    M3 -- "Yes" --> M4["Print Item Details"];
+    M4 --> E; %% Back to loop condition
+    M3 -- "No" --> M5["Print 'Item not found.'"];
+    M5 --> E; %% Back to loop condition
+
+    %% Case 6: EXIT
+    H -- "6: EXIT" --> N0["Set exit_requested = true"]; %% Prepare to exit loop
+    N0 --> N1["Print 'Exiting program.'"];
+    N1 --> N2["CALL logger.close()"];
+    N2 --> E; %% Back to loop condition (which will now evaluate to exit)
+
+    %% Default Case
+    H -- "OTHERWISE (default)" --> O1["Print 'Invalid command.'"];
+    O1 --> E; %% Back to loop condition
+
+    %% Loop Exit
+    E -- "False (exit_requested is true)" --> Z[End];

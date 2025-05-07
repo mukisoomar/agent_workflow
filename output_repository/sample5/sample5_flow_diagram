@@ -1,0 +1,37 @@
+graph TD
+    A[Start] --> B["Initialize Scanner, Inventory, TransactionLogger & exit=false"];
+    B --> LoopCond{"Loop: while !exit"};
+
+    LoopCond -- "True (!exit)" --> DispMenu["CALL displayMenu()"];
+    DispMenu --> ReadCmd["Read user command cmd"];
+    ReadCmd --> SwitchCmd{"Process Command (SWITCH cmd)"};
+
+    SwitchCmd -- "1: ADD" --> ProcAdd["CALL processAddItem(inventory, scanner, logger)"];
+    ProcAdd --> LogAdd["CALL logTransaction(logger, 'ADD', 'Item processed')"];
+    LogAdd --> LoopCond;
+
+    SwitchCmd -- "2: REMOVE" --> ProcRemove["CALL processRemoveItem(inventory, scanner, logger)"];
+    ProcRemove --> LogRemove["CALL logTransaction(logger, 'REMOVE', 'Item processed')"];
+    LogRemove --> LoopCond;
+
+    SwitchCmd -- "3: UPDATE_QUANTITY" --> ProcUpdateQty["CALL processUpdateQuantity(inventory, scanner, logger)"];
+    ProcUpdateQty --> LogUpdateQty["CALL logTransaction(logger, 'UPDATE_QUANTITY', 'Item processed')"];
+    LogUpdateQty --> LoopCond;
+
+    SwitchCmd -- "4: VIEW_ITEM" --> ProcViewItem["CALL processViewItem(inventory, scanner, logger)"];
+    ProcViewItem --> LogViewItem["CALL logTransaction(logger, 'VIEW_ITEM', 'Item details viewed')"];
+    LogViewItem --> LoopCond;
+
+    SwitchCmd -- "5: VIEW_INVENTORY" --> ProcViewInv["CALL inventory.viewInventory()"];
+    ProcViewInv --> LogViewInv["CALL logTransaction(logger, 'VIEW_INVENTORY', 'Viewed all items')"];
+    LogViewInv --> LoopCond;
+
+    SwitchCmd -- "6: EXIT" --> PrintExit["Print 'Exiting...'"];
+    PrintExit --> SetExit["Set exit = true"];
+    SetExit --> LoopCond;
+
+    SwitchCmd -- "OTHERWISE" --> PrintInvalid["Print 'Invalid command.'"];
+    PrintInvalid --> LogInvalid["CALL logTransaction(logger, 'INVALID_COMMAND', 'Details: ' + cmd)"];
+    LogInvalid --> LoopCond;
+
+    LoopCond -- "False (exit is true)" --> End[End];

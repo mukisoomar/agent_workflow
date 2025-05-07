@@ -1,0 +1,59 @@
+graph TD
+    A[Start] --> B["Initialize cmd=0, balance=1000, amount=0, Scanner"];
+    B --> E{"Loop: while cmd != 6"};
+
+    %% Main loop starts here
+    E -- "True (cmd != 6)" --> F["Print Menu Options"];
+    F --> G["Read cmd from user input"];
+    G --> H{"Process Command (SWITCH cmd)"};
+
+    %% Case 1: ADD
+    H -- "1: ADD" --> H1_1["Prompt for amount to add"];
+    H1_1 --> H1_2["Read amount"];
+    H1_2 --> H1_3["CALL add(amount, balance)"];
+    H1_3 --> H1_4["Update balance with result from add"];
+    H1_4 --> LOG_TX_1["CALL logTransaction(&quot;ADD&quot;, amount, balance)"];
+    LOG_TX_1 --> E; %% Loop back to condition
+
+    %% Case 2: WITHDRAW
+    H -- "2: WITHDRAW" --> H2_1["Prompt for amount to withdraw"];
+    H2_1 --> H2_2["Read amount"];
+    H2_2 --> H2_3["CALL withdraw(amount, balance)"];
+    %% Note: withdraw() itself has internal logic: if amount <= balance, balance -= amount, else print error
+    H2_3 --> H2_4["Update balance with result from withdraw"];
+    H2_4 --> LOG_TX_2["CALL logTransaction(&quot;WITHDRAW&quot;, amount, balance)"];
+    LOG_TX_2 --> E; %% Loop back to condition
+
+    %% Case 3: CHECK BALANCE
+    H -- "3: CHECK BALANCE" --> H3_1["CALL checkBalance(balance)"];
+    H3_1 --> LOG_TX_3["CALL logTransaction(&quot;CHECK BALANCE&quot;, 0, balance)"];
+    LOG_TX_3 --> E; %% Loop back to condition
+
+    %% Case 4: TRANSFER
+    H -- "4: TRANSFER" --> H4_1["Prompt for amount and recipientAccount"];
+    H4_1 --> H4_2["Read amount, recipientAccount"];
+    H4_2 --> H4_3["CALL transfer(amount, balance, recipientAccount)"];
+    %% Note: transfer() itself has internal logic: if amount <= balance, balance -= amount, else print error
+    H4_3 --> H4_4["Update balance with result from transfer"];
+    H4_4 --> LOG_TX_4["CALL logTransaction(&quot;TRANSFER&quot;, amount, balance)"];
+    LOG_TX_4 --> E; %% Loop back to condition
+
+    %% Case 5: ACCOUNT STATEMENT
+    H -- "5: ACCOUNT STATEMENT" --> H5_1["CALL getAccountStatement()"];
+    H5_1 --> LOG_TX_5["CALL logTransaction(&quot;ACCOUNT STATEMENT&quot;, 0, balance)"];
+    LOG_TX_5 --> E; %% Loop back to condition
+
+    %% Case 6: EXIT
+    H -- "6: EXIT" --> H6_1["Print &quot;Exiting...&quot;"];
+    %% cmd is already 6, no transaction log for EXIT
+    H6_1 --> E; %% Loop back to condition, which will evaluate to false
+
+    %% Default Case
+    H -- "OTHERWISE (Invalid Command)" --> H_DEF["Print &quot;Invalid command.&quot;"];
+    %% No transaction log for invalid command
+    H_DEF --> E; %% Loop back to condition
+
+    %% Loop Exit Path
+    E -- "False (cmd == 6)" --> I["Close Scanner object"];
+    I --> J["Print &quot;Program terminated.&quot;"];
+    J --> K[End];

@@ -1,0 +1,86 @@
+graph TD
+    A[Start] --> B["Initialize vars: balance, transactionCount, cmd=0, amount=0.0"];
+    B --> C["Create Scanner object"];
+    C --> D{"Loop: while cmd != 6"};
+
+    %% Loop Continues Path
+    D --"True (cmd != 6)"--> E["CALL displayMenu()"];
+    E --> F["Read user input for cmd"];
+    F --> G{"Process Command (SWITCH cmd)"};
+
+    %% Case 1: DEPOSIT
+    G --"1: DEPOSIT"--> H1["Prompt for amount"];
+    H1 --> I1["Read amount"];
+    I1 --> J1{"amount <= 0?"};
+    J1 --"True"--> K1["Print 'Invalid amount. Deposit cancelled.'"];
+    K1 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+    J1 --"False"--> L1["CALL deposit(amount, balance)"];
+    L1 --> M1["balance = result of deposit"];
+    M1 --> N1["Increment transactionCount"];
+    N1 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+
+    %% Case 2: WITHDRAW
+    G --"2: WITHDRAW"--> H2["Prompt for amount"];
+    H2 --> I2["Read amount"];
+    I2 --> J2{"amount <= 0?"};
+    J2 --"True"--> K2["Print 'Invalid amount. Withdraw cancelled.'"];
+    K2 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+    J2 --"False"--> L2{"amount > balance?"};
+    L2 --"True"--> M2["Print 'Insufficient funds.'"];
+    M2 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+    L2 --"False"--> N2["CALL withdraw(amount, balance)"];
+    N2 --> O2["balance = result of withdraw"];
+    O2 --> P2["Increment transactionCount"];
+    P2 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+
+    %% Case 3: CHECK BALANCE
+    G --"3: CHECK BALANCE"--> H3["CALL checkBalance(balance)"];
+    H3 --> I3["Increment transactionCount"];
+    I3 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+
+    %% Case 4: VIEW TRANSACTIONS
+    G --"4: VIEW TRANSACTIONS"--> H4["Print 'View Transactions (Not Implemented)'"];
+    H4 --> I4["Increment transactionCount"];
+    I4 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+
+    %% Case 5: CALCULATE INTEREST
+    G --"5: CALCULATE INTEREST"--> H5["Print 'Calculate Interest (Not Implemented)'"];
+    H5 --> I5["Increment transactionCount"];
+    I5 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+
+    %% Case 6: EXIT
+    G --"6: EXIT"--> H6["Print 'Exiting...'"];
+    %% cmd is now 6. This path will lead to IF_LOG_TRANSACTION,
+    %% but the condition for logging will be false.
+    H6 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+
+    %% Default Case
+    G --"OTHERWISE"--> H7["Print 'Invalid command. Please try again.'"];
+    %% This path will lead to IF_LOG_TRANSACTION,
+    %% but the condition for logging will be false.
+    H7 --> IF_LOG_TRANSACTION;
+    %% Path to logging decision
+
+    %% IF statement for logging transaction (after switch)
+    IF_LOG_TRANSACTION{"Log Transaction? (cmd >= 1 AND cmd <= 5 AND cmd != 6)"};
+    
+    IF_LOG_TRANSACTION --"True"--> LOG_CALL["CALL logTransaction(&quot;Command: &quot; + cmd, amount)"];
+    LOG_CALL --> D;
+    %% Loop back to main loop condition after logging
+
+    IF_LOG_TRANSACTION --"False"--> D;
+    %% Loop back to main loop condition (logging bypassed)
+
+    %% Loop Exits Path
+    D --"False (cmd == 6)"--> R["scanner.close()"];
+    R --> S["Print 'Program terminated.'"];
+    S --> T[End];

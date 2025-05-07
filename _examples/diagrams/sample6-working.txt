@@ -1,0 +1,104 @@
+graph TD
+    A["Start"] --> B["Initialize BankAccount (balance=1000)"];
+    B --> C["Initialize Scanner"];
+    C --> D["Initialize command = 0"];
+    D --> E_LoopCond{"Loop: while command != 6"};
+
+    %% Main Loop Body
+    E_LoopCond -- "True (command != 6)" --> F_DisplayMenu["CALL displayMenu()"];
+    F_DisplayMenu --> G_ReadCmd["Read user input for command"];
+    %% G_ReadCmd implies reading integer and consuming newline
+    G_ReadCmd --> H_Switch_PC{"processCommand (SWITCH command)"};
+
+    %% processCommand Branches
+    PC1_PrintError["Invalid deposit msg"];
+    %% Node Definition
+    H_Switch_PC -- "1: DEPOSIT" --> PC1_Prompt["Prompt for deposit amount"];
+    PC1_Prompt --> PC1_ReadAmt["Read amount"];
+    PC1_ReadAmt --> PC1_CheckAmt{"amount > 0?"};
+    PC1_CheckAmt -- "Yes" --> PC1_DoDeposit["CALL account.deposit(amount)"];
+    PC1_DoDeposit --> PC1_PrintSuccess["Print deposit success"];
+    PC1_PrintSuccess --> I_CheckLogCondition;
+    PC1_CheckAmt -- "No" --> PC1_PrintError;
+    %% Link to defined node
+    PC1_PrintError --> I_CheckLogCondition;
+
+    PC2_PrintError["Invalid withdrawal msg"];
+    %% Node Definition
+    H_Switch_PC -- "2: WITHDRAW" --> PC2_Prompt["Prompt for withdrawal amount"];
+    PC2_Prompt --> PC2_ReadAmt["Read amount"];
+    PC2_ReadAmt --> PC2_CheckFunds{"amount > 0 AND amount <= account.getBalance()?"};
+    PC2_CheckFunds -- "Yes" --> PC2_DoWithdraw["CALL account.withdraw(amount)"];
+    PC2_DoWithdraw --> PC2_PrintSuccess["Print withdrawal success"];
+    PC2_PrintSuccess --> I_CheckLogCondition;
+    PC2_CheckFunds -- "No" --> PC2_PrintError;
+    %% Link to defined node
+    PC2_PrintError --> I_CheckLogCondition;
+
+    H_Switch_PC -- "3: CHECK_BALANCE" --> PC3_PrintBalance["Print account.getBalance()"];
+    PC3_PrintBalance --> I_CheckLogCondition;
+
+    H_Switch_PC -- "4: VIEW_TRANSACTION_HISTORY" --> PC4_PrintHistory["CALL account.printTransactionHistory()"];
+    PC4_PrintHistory --> I_CheckLogCondition;
+
+    PC5_PrintError["Invalid rate msg"];
+    %% Node Definition
+    H_Switch_PC -- "5: ADD_INTEREST" --> PC5_PromptRate["Prompt for interest rate"];
+    PC5_PromptRate --> PC5_ReadRate["Read rate"];
+    PC5_ReadRate --> PC5_CheckRate{"rate > 0?"};
+    PC5_CheckRate -- "Yes" --> PC5_DoAddInterest["CALL account.addInterest(rate)"];
+    PC5_DoAddInterest --> PC5_PrintSuccess["Print interest success"];
+    PC5_PrintSuccess --> I_CheckLogCondition;
+    PC5_CheckRate -- "No" --> PC5_PrintError;
+    %% Link to defined node
+    PC5_PrintError --> I_CheckLogCondition;
+
+    PC6_PrintExit["Exiting command msg"];
+    %% Node Definition (This corresponds to the original error area for Attempt 1)
+    H_Switch_PC -- "6: EXIT" --> PC6_PrintExit;
+    %% Link to defined node
+    PC6_PrintExit --> I_CheckLogCondition;
+
+    PC_Default_Print["Invalid command msg"];
+    %% Node Definition
+    H_Switch_PC -- "default" --> PC_Default_Print;
+    %% Link to defined node
+    PC_Default_Print --> I_CheckLogCondition;
+
+    %% Conditional Logging (after processCommand logic is done for the current command)
+    I_CheckLogCondition{"if (command >= 1 AND command <= 5)?"};
+    I_CheckLogCondition -- "Yes" --> J_Switch_LT{"logTransaction (SWITCH command)"};
+    
+    %% logTransaction Branches
+    LT1_Log["Log DEPOSIT"];
+    J_Switch_LT -- "1: DEPOSIT" --> LT1_Log;
+    LT1_Log --> E_LoopCond;
+    %% Back to main loop condition
+
+    LT2_Log["Log WITHDRAW"];
+    J_Switch_LT -- "2: WITHDRAW" --> LT2_Log;
+    LT2_Log --> E_LoopCond;
+
+    LT3_Log["Log CHECK_BALANCE"];
+    J_Switch_LT -- "3: CHECK_BALANCE" --> LT3_Log;
+    LT3_Log --> E_LoopCond;
+
+    LT4_Log["Log VIEW_HISTORY"];
+    J_Switch_LT -- "4: VIEW_TRANSACTION_HISTORY" --> LT4_Log;
+    LT4_Log --> E_LoopCond;
+
+    LT5_Log["Log ADD_INTEREST"];
+    J_Switch_LT -- "5: ADD_INTEREST" --> LT5_Log;
+    LT5_Log --> E_LoopCond;
+    %% No default case in logTransaction that adds to history, and it's only called if command is 1-5.
+
+    I_CheckLogCondition -- "No" --> E_LoopCond;
+    %% If not logging (e.g. command is 6 or invalid/default), go back to main loop condition
+
+    %% Loop Exit
+    K_PrintExitMain["Exiting program msg"];
+    %% Node Definition
+    E_LoopCond -- "False (command == 6)" --> K_PrintExitMain;
+    %% Link to defined node
+    K_PrintExitMain --> L_CloseScanner["Close scanner"];
+    L_CloseScanner --> M_End["End"];

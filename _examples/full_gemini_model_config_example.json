@@ -1,0 +1,13 @@
+{
+  "provider": "gemini",
+  "model": "gemini-2.5-pro-exp-03-25",
+  "temperature": 0.5,
+  "top_p": 1.0,
+  "n": 1,
+  "stop": null,
+  "max_tokens": 1024,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "logit_bias": {},
+  "user": "gemini-agent"
+}

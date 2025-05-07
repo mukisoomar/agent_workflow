@@ -1,0 +1,48 @@
+graph TD
+    A[Start] --> B["Initialize Scanner, Inventory, Logger"];
+    B --> C{"Loop: while(true)"};
+
+    C -- True --> D["CALL displayMenu()"];
+    D --> E["Read Command"];
+    E --> F{"Switch (command)"};
+
+    F -- "1: ADD_ITEM" --> G1["Prompt for Item ID, Name, Quantity, Price"];
+    G1 --> G2["Create Item object"];
+    G2 --> G3["CALL inventory.addItem(item)"];
+    G3 --> G4["CALL logger.logTransaction 'ADD', item.getName(), item.getQuantity()"];
+    G4 --> C;
+    %% Loop back
+
+    F -- "2: REMOVE_ITEM" --> H1["Prompt for Item ID to Remove"];
+    H1 --> H2["CALL inventory.removeItem(itemIdToRemove)"];
+    H2 --> H3["CALL logger.logTransaction 'REMOVE', itemIdToRemove, 1"];
+    H3 --> C;
+    %% Loop back
+
+    F -- "3: UPDATE_QUANTITY" --> I1["Prompt for Item ID and New Quantity"];
+    I1 --> I2["CALL inventory.updateItemQuantity(itemIdToUpdate, newQuantity)"];
+    I2 --> I3["CALL logger.logTransaction 'UPDATE_QTY', itemIdToUpdate, newQuantity"];
+    I3 --> C;
+    %% Loop back
+
+    F -- "4: VIEW_INVENTORY" --> J1["CALL inventory.displayInventory()"];
+    J1 --> C;
+    %% Loop back
+
+    F -- "5: SEARCH_ITEM" --> K1["Prompt for Item ID to Search"];
+    K1 --> K2["CALL inventory.findItemById(itemIdToSearch)"];
+    K2 --> K3{"Item Found?"};
+    K3 -- Yes --> K4["Print Item Details"];
+    K4 --> C;
+    %% Loop back
+    K3 -- No --> K5["Print 'Item not found.'"];
+    K5 --> C;
+    %% Loop back
+
+    F -- "6: EXIT" --> L1["Print 'Exiting system.'"];
+    L1 --> Z[End];
+    %% Exit program
+
+    F -- "default" --> M1["Print 'Invalid command.'"];
+    M1 --> C;
+    %% Loop back

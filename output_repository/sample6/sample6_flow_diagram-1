@@ -1,0 +1,109 @@
+graph TD
+    %% Node Definitions
+    A["Start"]
+    B["Initialize vars: balance=0, cmd=0, amount=0"]
+    C["Create Scanner"]
+    D{"Loop: while cmd != 6"}
+    E["Print menu"]
+    F["Read cmd from user"]
+    G{"Process Command (CASE cmd)"}
+
+    %% Case 1: ADD Nodes
+    G1_1["Prompt for deposit amount"]
+    G1_2["Read amount"]
+    G1_3["CALL deposit(amount)"]
+    G1_4{"deposit_ok?"}
+    G1_5["Update balance += amount"]
+    G1_6["Print &quot;Invalid deposit msg&quot;"]
+
+    %% Case 2: WITHDRAW Nodes
+    G2_1["Prompt for withdrawal amount"]
+    G2_2["Read amount"]
+    G2_3["CALL withdraw(amount, balance)"]
+    G2_4{"withdraw_ok?"}
+    G2_5["Update balance -= amount"]
+    G2_6["Print &quot;Invalid withdrawal msg&quot;"]
+
+    %% Case 3: BALANCE Nodes
+    G3_1["Print current balance"]
+
+    %% Case 4: LOG DEPOSIT Nodes
+    G4_1["CALL logTransaction(&quot;DEPOSIT&quot;, amount)"]
+
+    %% Case 5: LOG WITHDRAW Nodes
+    G5_1["CALL logTransaction(&quot;WITHDRAW&quot;, amount)"]
+
+    %% Case 6: EXIT Nodes
+    G6_1["Print &quot;Exiting command msg&quot;"]
+
+    %% Default Case Node
+    GDEF["Print &quot;Invalid command msg&quot;"]
+
+    %% Post-Loop Nodes
+    H["Close Scanner"]
+    I["Print &quot;Program terminated msg&quot;"]
+    J["End"]
+
+    %% Flow Connections
+    A --> B
+    B --> C
+    C --> D
+
+    %% Loop Entry and Main Loop Body
+    D -- "True (cmd != 6)" --> E
+    E --> F
+    F --> G
+
+    %% Switch Case 1: ADD
+    G -- "1: ADD" --> G1_1
+    G1_1 --> G1_2
+    G1_2 --> G1_3
+    G1_3 --> G1_4
+    G1_4 -- "True" --> G1_5
+    G1_5 --> D 
+    %% Loop back
+    G1_4 -- "False" --> G1_6
+    G1_6 --> D 
+    %% Loop back
+
+    %% Switch Case 2: WITHDRAW
+    G -- "2: WITHDRAW" --> G2_1
+    G2_1 --> G2_2
+    G2_2 --> G2_3
+    G2_3 --> G2_4
+    G2_4 -- "True" --> G2_5
+    G2_5 --> D 
+    %% Loop back
+    G2_4 -- "False" --> G2_6
+    G2_6 --> D 
+    %% Loop back
+
+    %% Switch Case 3: BALANCE
+    G -- "3: BALANCE" --> G3_1
+    G3_1 --> D 
+    %% Loop back
+
+    %% Switch Case 4: LOG DEPOSIT
+    G -- "4: LOG DEPOSIT" --> G4_1
+    G4_1 --> D 
+    %% Loop back
+
+    %% Switch Case 5: LOG WITHDRAW
+    G -- "5: LOG WITHDRAW" --> G5_1
+    G5_1 --> D 
+    %% Loop back
+
+    %% Switch Case 6: EXIT
+    G -- "6: EXIT" --> G6_1
+    G6_1 --> D 
+    %% Loop back (cmd is now 6, loop condition D will be false)
+
+    %% Switch Default Case
+    G -- "OTHERWISE" --> GDEF
+    GDEF --> D 
+    %% Loop back
+
+    %% Loop Exit Path
+    D -- "False (cmd == 6)" --> H
+    H --> I
+    I --> J

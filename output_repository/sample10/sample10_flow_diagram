@@ -1,0 +1,63 @@
+graph TD
+    A[Start] --> B[Initialize Scanner, Inventory, Logger];
+    B --> B_INIT_FLAG[Set exitLoop = false];
+    B_INIT_FLAG --> L{"Loop: exitLoop == false?"};
+
+    %% Main loop processing
+    L -- "True (Continue)" --> D["CALL displayMenu()"];
+    D --> E[Read User Command];
+    E --> F{"Process Command (SWITCH cmd)"};
+
+    %% Case 1: ADD
+    F -- "1: ADD" --> F1_1[Prompt for Item Details];
+    F1_1 --> F1_2[Create Item object];
+    F1_2 --> F1_3["CALL inventory.addItem(item)"];
+    F1_3 --> F1_4["CALL logger.logTransaction(\"ADD\")"];
+    F1_4 --> L;
+    %% Loop back to condition
+
+    %% Case 2: UPDATE
+    F -- "2: UPDATE" --> F2_1[Prompt for Item ID & New Quantity];
+    F2_1 --> F2_2["CALL inventory.updateItemQuantity(...)"];
+    F2_2 --> F2_3["CALL logger.logTransaction(\"UPDATE\")"];
+    F2_3 --> L;
+    %% Loop back to condition
+
+    %% Case 3: REMOVE
+    F -- "3: REMOVE" --> F3_1[Prompt for Item ID];
+    F3_1 --> F3_2["CALL inventory.removeItem(...)"];
+    F3_2 --> F3_3["CALL logger.logTransaction(\"REMOVE\")"];
+    F3_3 --> L;
+    %% Loop back to condition
+
+    %% Case 4: DISPLAY
+    F -- "4: DISPLAY" --> F4_1["CALL inventory.displayInventory()"];
+    F4_1 --> L;
+    %% Loop back to condition
+
+    %% Case 5: SEARCH
+    F -- "5: SEARCH" --> F5_1[Prompt for Item ID];
+    F5_1 --> F5_2["CALL inventory.searchItem(itemId)"];
+    F5_2 --> F5_3{"Item Found?"};
+    F5_3 -- "Yes" --> F5_4[Print Item Details];
+    F5_4 --> L;
+    %% Loop back to condition
+    F5_3 -- "No" --> F5_5[Print "Item not found"];
+    F5_5 --> L;
+    %% Loop back to condition
+
+    %% Case 6: EXIT
+    F -- "6: EXIT" --> F6_0[Set exitLoop = true];
+    %% Prepare to exit loop
+    F6_0 --> F6_1[Print "Exiting program."];
+    F6_1 --> F6_2["CALL logger.close()"];
+    F6_2 --> L;
+    %% Loop back to condition (which will then evaluate to false)
+
+    %% Default Case
+    F -- "OTHERWISE" --> FDEF[Print "Invalid command."];
+    FDEF --> L;
+    %% Loop back to condition
+
+    %% Loop exit
+    L -- "False (Exit)" --> G[End];
