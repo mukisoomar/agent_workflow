@@ -5,19 +5,19 @@ from utils.logger import get_logger
 logger = get_logger("LLM")
 
 class LLMService:
-    def __init__(self, model_config):
-        self.provider = model_config.get("provider", "openai").lower()
-        self.model = model_config.get("model", "gpt-4")
-        self.temperature = model_config.get("temperature", 0.7)
-        self.top_p = model_config.get("top_p", 1.0)
-        self.n = model_config.get("n", 1)
-        self.stop = model_config.get("stop", None)
-        self.max_tokens = model_config.get("max_tokens", 1024)
+    def __init__(self, agent_config):
+        self.provider = agent_config.get("provider", "openai").lower()
+        self.model = agent_config.get("model", "gpt-4")
+        self.temperature = agent_config.get("temperature", 0.1)
+        self.top_p = agent_config.get("top_p", 1.0)
+        self.n = agent_config.get("n", 1)
+        self.stop = agent_config.get("stop", None)
+        self.max_tokens = agent_config.get("max_tokens", 1024)
 
-        self.presence_penalty = model_config.get("presence_penalty", 0.0)
-        self.frequency_penalty = model_config.get("frequency_penalty", 0.0)
-        self.logit_bias = model_config.get("logit_bias", None)
-        self.user = model_config.get("user", None)
+        self.presence_penalty = agent_config.get("presence_penalty", 0.0)
+        self.frequency_penalty = agent_config.get("frequency_penalty", 0.0)
+        self.logit_bias = agent_config.get("logit_bias", None)
+        self.user = agent_config.get("user", None)
 
         if self.provider == "openai":
             api_key = os.getenv("OPENAI_API_KEY")
@@ -34,6 +34,7 @@ class LLMService:
             )
         else:
             raise ValueError(f"Unsupported provider: {self.provider}")
+        print(f"Moderl Parameters: \n {agent_config}")
 
     def chat(self, messages):
         kwargs = {

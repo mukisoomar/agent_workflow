@@ -10,3 +10,10 @@ __pycache__/
 
 # Additional README files
 README[0-9]*
+
+# Example files
+_examples/
+
+# Input and Output repositories
+input_repository/
+output_repository/

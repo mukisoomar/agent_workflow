@@ -93,6 +93,118 @@ output/
     └── agent_generate_java_code.txt
 ```
 
+To specify a file name in the agent_config.json that appends custom text to the original file name, you can use a placeholder or a convention in the `output_file` field. For example, you can specify a suffix to be appended to the original file name.
+
+### Example agent_config.json:
+
+```json
+{
+  "agent_generate_java_code": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro-exp-03-25",
+    "temperature": 0.1,
+    "top_p": 0.9,
+    "n": 1,
+    "max_tokens": 1000000,
+    "output_file_suffix": "_java_code"
+  },
+  "agent_generate_brd": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro-exp-03-25",
+    "temperature": 0.1,
+    "top_p": 0.9,
+    "n": 1,
+    "max_tokens": 1000000,
+    "output_file_suffix": "_brd"
+  },
+  "agent_tal_tech_specs": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro-exp-03-25",
+    "temperature": 0.1,
+    "top_p": 0.9,
+    "n": 1,
+    "max_tokens": 1000000,
+    "output_file_suffix": "_tech_specs"
+  },
+  "agent_call_external_service": {
+    "output_file": "external_output.txt"
+  }
+}
+```
+
+### Updated Code to Handle Suffix:
+
+You can modify the `execute` function to handle this logic. If `output_file_suffix` is specified in the agent_config.json, it will append the suffix to the original file name.
+
+```python
+def execute(agent_name, input_path, previous_agents=[]):
+    try:
+        logger.info(f"Executing {agent_name} on {input_path}...")
+        agent = agents[agent_name]
+
+        # Get the base output directory from the default_config.json
+        base_output_dir = default_config.get("output_folder", "output")
+
+        # Create a directory for the agent within the base output directory
+        agent_output_dir = Path(base_output_dir) / agent_name
+        agent_output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Determine the output file name
+        agent_config = agent_configs.get(agent_name, {})
+        if "output_file" in agent_config:
+            # Use the explicitly specified output file name
+            output_file_name = agent_config["output_file"]
+        elif "output_file_suffix" in agent_config:
+            # Append the suffix to the original input file name
+            original_file_name = Path(input_path).stem
+            output_file_name = f"{original_file_name}{agent_config['output_file_suffix']}.txt"
+        else:
+            # Default to {agent_name}.txt
+            output_file_name = f"{agent_name}.txt"
+
+        # Construct the full output path
+        output_path = agent_output_dir / output_file_name
+
+        # Gather outputs from previous agents for context
+        previous_outputs = {p: output_map[p] for p in previous_agents if p in output_map}
+
+        # Run the agent on the input file, passing previous outputs as context
+        agent.run(input_path, output_path, previous_outputs)
+
+        # Read and store the agent's output for use by downstream agents
+        with open(output_path, 'r') as f:
+            current_output = f.read()
+        output_map[agent_name] = current_output
+
+        # Recursively execute downstream agents as defined in the flow
+        for next_agent in flow.get(agent_name, []):
+            execute(next_agent, output_path, previous_agents + [agent_name])
+    except Exception as e:
+        logger.error(f"Stopping flow: {agent_name} failed: {str(e)}")
+        return
+```
+
+### Explanation of how output files are generated:
+
+1. **`output_file`**:
+
+   - If explicitly specified in agent_config.json, it will use this value as the file name.
+
+2. **`output_file_suffix`**:
+
+   - If `output_file_suffix` is specified, it appends the suffix to the original input file name (e.g., `input_file_java_code.txt`).
+
+3. **Default Behavior**:
+   - If neither `output_file` nor `output_file_suffix` is specified, it defaults to `{agent_name}.txt`.
+
+### Example Behavior:
+
+- For `agent_generate_java_code`:
+  - Input file: `example_input.txt`
+  - Output file: `example_input_java_code.txt`
+- For `agent_call_external_service`:
+  - Output file: `external_output.txt` (explicitly specified in the config).
+
 ---
 
 ## 🙌 Extend This
@@ -293,7 +405,6 @@ output/<input_filename>/<agent_name>.txt
 
 Each agent receives its input from the original file or a previous output, and all context is propagated automatically.
 
-
 ---
 
 ## 🔌 Extending Agents for Custom Logic
@@ -332,6 +443,7 @@ class AgentCallExternalService(Agent):
 ### 🧩 Configuration
 
 #### `config/flow.json`
+
 ```json
 {
   "agent_call_external_service": []
@@ -339,6 +451,7 @@ class AgentCallExternalService(Agent):
 ```
 
 #### `config/agent_config.json`
+
 ```json
 {
   "agent_call_external_service": {
