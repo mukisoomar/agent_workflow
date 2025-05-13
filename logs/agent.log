@@ -1535,3 +1535,161 @@
 2025-05-07 00:21:36 [INFO] [LLM] Gemini usage: prompt=1015, completion=1098, total=11581
 2025-05-07 00:21:36 [INFO] [agent_generate_flow_diagram] Extracting code block between triple backticks
 2025-05-07 00:21:36 [INFO] [agent_generate_flow_diagram] Writing output for agent agent_generate_flow_diagram to output_repository/sample6/sample6_flow_diagram
+2025-05-12 18:44:05 [INFO] [test_config_loader] Setting up TestConfigLoader tests.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Created temporary config directory: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test
+2025-05-12 18:44:05 [INFO] [test_config_loader] Created dummy configuration files for testing.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Testing getter methods.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Getter methods test passed.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Testing loading of invalid JSON configuration.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:44:05 [ERROR] [config.config_loader] Error decoding JSON from default_config file at /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/invalid_json.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-05-12 18:44:05 [INFO] [test_config_loader] Invalid JSON configuration test passed.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Testing missing agent_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:44:05 [ERROR] [config.config_loader] agent_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_agent.json
+2025-05-12 18:44:05 [INFO] [test_config_loader] Missing agent_config.json test passed.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Testing missing default_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:44:05 [ERROR] [config.config_loader] default_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_default.json
+2025-05-12 18:44:05 [INFO] [test_config_loader] Missing default_config.json test passed.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Testing missing flow_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:44:05 [ERROR] [config.config_loader] flow_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_flow.json
+2025-05-12 18:44:05 [INFO] [test_config_loader] Missing flow_config.json test passed.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Testing loading of valid configuration files.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Valid configuration loading test passed.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Testing singleton instance creation.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:44:05 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Singleton instance test passed.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Tearing down TestConfigLoader tests.
+2025-05-12 18:44:05 [INFO] [test_config_loader] Removed temporary config directory: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test
+2025-05-12 18:45:16 [INFO] [__main__] Starting ConfigLoader test suite.
+2025-05-12 18:45:16 [INFO] [__main__] Setting up TestConfigLoader tests.
+2025-05-12 18:45:16 [INFO] [__main__] Created temporary config directory: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test
+2025-05-12 18:45:16 [INFO] [__main__] Created dummy configuration files for testing.
+2025-05-12 18:45:16 [INFO] [__main__] Testing getter methods.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:45:16 [INFO] [__main__] Getter methods test passed.
+2025-05-12 18:45:16 [INFO] [__main__] Testing loading of invalid JSON configuration.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:45:16 [ERROR] [config.config_loader] Error decoding JSON from default_config file at /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/invalid_json.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-05-12 18:45:16 [INFO] [__main__] Invalid JSON configuration test passed.
+2025-05-12 18:45:16 [INFO] [__main__] Testing missing agent_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:45:16 [ERROR] [config.config_loader] agent_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_agent.json
+2025-05-12 18:45:16 [INFO] [__main__] Missing agent_config.json test passed.
+2025-05-12 18:45:16 [INFO] [__main__] Testing missing default_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:45:16 [ERROR] [config.config_loader] default_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_default.json
+2025-05-12 18:45:16 [INFO] [__main__] Missing default_config.json test passed.
+2025-05-12 18:45:16 [INFO] [__main__] Testing missing flow_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:45:16 [ERROR] [config.config_loader] flow_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_flow.json
+2025-05-12 18:45:16 [INFO] [__main__] Missing flow_config.json test passed.
+2025-05-12 18:45:16 [INFO] [__main__] Testing loading of valid configuration files.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:45:16 [INFO] [__main__] Valid configuration loading test passed.
+2025-05-12 18:45:16 [INFO] [__main__] Testing singleton instance creation.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:45:16 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:45:16 [INFO] [__main__] Singleton instance test passed.
+2025-05-12 18:45:16 [INFO] [__main__] Tearing down TestConfigLoader tests.
+2025-05-12 18:45:16 [INFO] [__main__] Removed temporary config directory: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test
+2025-05-12 18:53:56 [INFO] [__main__] Starting ConfigLoader test suite.
+2025-05-12 18:53:56 [INFO] [__main__] Setting up TestConfigLoader tests.
+2025-05-12 18:53:56 [INFO] [__main__] Created temporary config directory: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test
+2025-05-12 18:53:56 [INFO] [__main__] Created dummy configuration files for testing.
+2025-05-12 18:53:56 [INFO] [__main__] Testing getter methods.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:53:56 [INFO] [__main__] Getter methods test passed.
+2025-05-12 18:53:56 [INFO] [__main__] Testing loading of invalid JSON configuration.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:53:56 [ERROR] [config.config_loader] Error decoding JSON from default_config file at /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/invalid_json.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-05-12 18:53:56 [INFO] [__main__] Invalid JSON configuration test passed.
+2025-05-12 18:53:56 [INFO] [__main__] Testing missing agent_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:53:56 [ERROR] [config.config_loader] agent_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_agent.json
+2025-05-12 18:53:56 [INFO] [__main__] Missing agent_config.json test passed.
+2025-05-12 18:53:56 [INFO] [__main__] Testing missing default_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:53:56 [ERROR] [config.config_loader] default_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_default.json
+2025-05-12 18:53:56 [INFO] [__main__] Missing default_config.json test passed.
+2025-05-12 18:53:56 [INFO] [__main__] Testing missing flow_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:53:56 [ERROR] [config.config_loader] flow_config file not found at path: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/non_existent_flow.json
+2025-05-12 18:53:56 [INFO] [__main__] Missing flow_config.json test passed.
+2025-05-12 18:53:56 [INFO] [__main__] Testing loading of valid configuration files.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:53:56 [INFO] [__main__] Valid configuration loading test passed.
+2025-05-12 18:53:56 [INFO] [__main__] Testing singleton instance creation.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Creating a new instance of ConfigLoader.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Starting to load configurations.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded default_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/default_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded agent_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/agent_config.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] Successfully loaded flow_config from /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test/flow.json.
+2025-05-12 18:53:56 [INFO] [config.config_loader] All configurations loaded successfully.
+2025-05-12 18:53:56 [INFO] [__main__] Singleton instance test passed.
+2025-05-12 18:53:56 [INFO] [__main__] Tearing down TestConfigLoader tests.
+2025-05-12 18:53:56 [INFO] [__main__] Removed temporary config directory: /Users/mukisoomar/Documents/Wells/Dev2/agent_workflow/Test/temp_config_for_test
